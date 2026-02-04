@@ -55,6 +55,9 @@ section.slide{
   border-radius:28px;
   padding:clamp(18px, 3vw, 42px);
   box-shadow:0 30px 70px rgba(0,0,0,.12);
+  max-height: calc(100vh - 2 * clamp(20px, 4vw, 64px));
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ===== ТИПОГРАФИКА ===== */
@@ -440,6 +443,15 @@ section.slide{
   font-size:clamp(24px, 3vw, 40px);
   color:var(--accent);
 }
+.card .h-serif{
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(8px);
+  padding: 10px 0;
+  margin-top: -10px;
+  z-index: 5;
+}
 </style>
 </head>
 
@@ -525,10 +537,10 @@ section.slide{
         </p>
 
         <div class="collage" aria-label="Фото молодожёнов">
-          <figure class="shot s1"><img src="assets/img/pa1.jpeg" alt=""><figcaption>1 фото</figcaption></figure>
-          <figure class="shot s2"><img src="assets/img/pa2.jpeg" alt=""><figcaption>2 фото</figcaption></figure>
-          <figure class="shot s3"><img src="assets/img/pa3.jpeg" alt=""><figcaption>3 фото</figcaption></figure>
-          <figure class="shot s4"><img src="assets/img/pa1.jpeg" alt=""><figcaption>ещё фото (можно заменить)</figcaption></figure>
+          <figure class="shot s1"><img src="assets/img/pa1.JPEG" alt=""><figcaption>1 фото</figcaption></figure>
+          <figure class="shot s2"><img src="assets/img/pa2.JPEG" alt=""><figcaption>2 фото</figcaption></figure>
+          <figure class="shot s3"><img src="assets/img/pa3.JPEG" alt=""><figcaption>3 фото</figcaption></figure>
+          <figure class="shot s4"><img src="assets/img/pa1.JPEG" alt=""><figcaption>ещё фото (можно заменить)</figcaption></figure>
         </div>
       </div>
     </div>
@@ -773,3 +785,27 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
 </body>
 </html>
+
+/* ===== MOBILE FIX: отключаем слайды на телефоне ===== */
+@media (max-width: 900px){
+  main{
+    scroll-snap-type: none;      /* выключаем "слайды" */
+  }
+  section.slide{
+    height: auto;                /* не режем контент 100vh */
+    min-height: 100vh;           /* но секция всё равно как экран */
+    align-items: flex-start;     /* контент сверху, а не по центру */
+    padding: 18px 14px;
+  }
+  .card{
+    max-height: none;            /* убираем внутреннюю прокрутку карточки */
+    overflow: visible;
+    padding: 18px 16px;
+  }
+}
+
+@media (max-width: 900px){
+  .kid img{ height: 220px; }
+  .shot.s1,.shot.s2,.shot.s3,.shot.s4{ height: 220px; }
+  .row{ grid-template-columns: 48px 70px 1fr; }
+}
