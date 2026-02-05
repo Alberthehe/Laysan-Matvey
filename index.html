@@ -430,10 +430,34 @@ section{
   .shot.s1,.shot.s2,.shot.s3,.shot.s4{ grid-column:1 / span 12; height:240px; margin-top:0; transform:none; }
 }
 @media (max-width: 600px){
-  .hero-photos img{ display:none; } /* на телефоне убираем, чтобы не мешали */
+  .hero-photos img{
+    display:block;
+    width: 120px;
+    top: 16%;
+    transform: none;
+    opacity: 1;
+    animation: none;
+  }
+  .hero-photos .left{ left: 10px; }
+  .hero-photos .right{ right: 10px; }
+
   .kid img{ height:220px; }
   .row{ grid-template-columns: 48px 70px 1fr; }
   .palette{ grid-auto-flow: row; grid-template-columns: repeat(3, max-content); }
+}
+
+/* FIX: карточка в hero всегда по центру */
+.hero .wrap{
+  display:flex;
+  justify-content:center;
+}
+.hero .card{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+html, body{
+  overflow-x: hidden;
 }
 </style>
 </head>
@@ -509,10 +533,10 @@ section{
       </p>
 
       <div class="collage" aria-label="Фото молодожёнов">
-        <figure class="shot s1"><img src="assets/img/pa1.jpeg" alt=""><figcaption>1 фото</figcaption></figure>
-        <figure class="shot s2"><img src="assets/img/pa2.jpeg" alt=""><figcaption>2 фото</figcaption></figure>
-        <figure class="shot s3"><img src="assets/img/pa3.jpeg" alt=""><figcaption>3 фото</figcaption></figure>
-        <figure class="shot s4"><img src="assets/img/pa1.jpeg" alt=""><figcaption>ещё фото (можно заменить)</figcaption></figure>
+        <figure class="shot s1"><img src="assets/img/pa1.JPEG" alt=""><figcaption>1 фото</figcaption></figure>
+        <figure class="shot s2"><img src="assets/img/pa2.JPEG" alt=""><figcaption>2 фото</figcaption></figure>
+        <figure class="shot s3"><img src="assets/img/pa3.JPEG" alt=""><figcaption>3 фото</figcaption></figure>
+        <figure class="shot s4"><img src="assets/img/pa1.JPEG" alt=""><figcaption>ещё фото (можно заменить)</figcaption></figure>
       </div>
     </div>
   </div>
